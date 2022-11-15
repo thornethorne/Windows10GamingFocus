@@ -7,7 +7,7 @@
 #
 #	Addition: One command to rule them all, One command to find it, and One command to Run it! 
 #
-#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('http://tweaks.daddymadu.gg')"
+#     > powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/thornethorne/Windows10GamingFocus/master/win10debloatandgamingtweaks.ps1')"
 #
 #     Changelogs Moved to ReadMe File for better mangement. 
 #
@@ -43,11 +43,11 @@ $tweaks = @(
 	
 	### DaddyMadu Windows Defender Settings! Don't Change Order Just Disable with # If You Don't want it ###
 	"MSIMode",                       #Enable Or Disable MSI Mode For Supported Cards, WARNING ENABLING MSI MODE MIGHT CRUSH YOUR SYSTEM! IF IT HAPPENS PLEASE RESTORE LAST WORKING SYSTEM RESTORE POINT AND DON'T ENABLE MSI MODE ON THIS SYSTEM AGAIN!
-	"DisableNagle",
+	#"DisableNagle",
 	"askDefender",
 	"DorEOneDrive",                  #Option to Install Or Uninstall Microsoft One Drive!
 	"askXBOX",
-	"Windows11Extra",
+	#"Windows11Extra",
 	#"askMSPPS",                      #Option to enable or disable Microsoft Software Protection Platform Service” Causing High CPU Usage
 	#"askMSWSAPPX",                   #Option to enable or disable Wsappx to Fix 100% Disk Usage in Windows 10 in older systems
 
@@ -78,7 +78,7 @@ $tweaks = @(
 	"SetUACLow",                  # "SetUACHigh",
 	# "EnableSharingMappedDrives",  # "DisableSharingMappedDrives",
 	# "DisableAdminShares",           # "EnableAdminShares",
-	"DisableSMB1",                # "EnableSMB1",
+	#"DisableSMB1",                # "EnableSMB1",
 	# "DisableSMBServer",           # "EnableSMBServer",
 	# "DisableLLMNR",               # "EnableLLMNR",
 	"SetCurrentNetworkPrivate",     # "SetCurrentNetworkPublic",
@@ -96,9 +96,10 @@ $tweaks = @(
 	"EnableUpdateDriver",        # "EnableUpdateDriver",  #"DisableUpdateDriver",
 	"DisableUpdateRestart",         # "EnableUpdateRestart",
 	"DisableHomeGroups",          # "EnableHomeGroups",
-	"EnableSharedExperiences",     # "SharedExperiences",
+	# "EnableSharedExperiences",     
+"DisableSharedExperiences",
 	"DisableRemoteAssistance",      # "EnableRemoteAssistance",
-	"EnableRemoteDesktop",          # "DisableRemoteDesktop",
+	# "EnableRemoteDesktop",          "DisableRemoteDesktop",
 	"DisableAutoplay",              # "EnableAutoplay",
 	"DisableAutorun",               # "EnableAutorun",
 	"DisableStorageSense",        # "EnableStorageSense",
@@ -192,7 +193,7 @@ $tweaks = @(
 	# "InstallHyperV",              # "UninstallHyperV",
 	"SetPhotoViewerAssociation",    # "UnsetPhotoViewerAssociation",
 	"AddPhotoViewerOpenWith",       # "RemovePhotoViewerOpenWith",
-	"InstallPDFPrinter",		# "UninstallPDFPrinter",
+	# "InstallPDFPrinter",		# "UninstallPDFPrinter",
 	# "UninstallXPSPrinter",          # "InstallXPSPrinter",
 	# "RemoveFaxPrinter",             # "AddFaxPrinter",
 	"SVCHostTweak",
@@ -221,7 +222,7 @@ $tweaks = @(
 	"DecreaseMKBuffer",
 	"StophighDPC",
 	"NvidiaTweaks",
-	"AMDGPUTweaks",
+	#"AMDGPUTweaks",
 	"NetworkOptimizations",
 	"RemoveEdit3D",
 	"FixURLext",  # fix issue with games shortcut that created by games lunchers turned white!
@@ -3415,11 +3416,8 @@ Function Finished {
 	Set-ItemProperty -Path "HKCR:\Msi.Package\shell\runas" -Name "HasLUAShield" -Type String -Value "" | Out-Null -ErrorAction SilentlyContinue
 	Set-ItemProperty -Path "HKCR:\Msi.Package\shell\runas\command" -Name "(Default)" -Type ExpandString -Value '"%SystemRoot%\System32\msiexec.exe" /i "%1" %*' | Out-Null -ErrorAction SilentlyContinue
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -Type DWord -Value 1
-        cmd /c 'REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "This PC is Optimized by DaddyMadu" /f 2>nul' >$null
-        cmd /c 'REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportURL" /t REG_SZ /d "http://daddymadu.gg" /f 2>nul' >$null
-	Start-Sleep -s 5
         Write-Output "Done! Please Reboot Your PC! Don't forget to follow me on Social Media."
-        Start "http://daddymadu.gg"
+
 }
 
 ##########
